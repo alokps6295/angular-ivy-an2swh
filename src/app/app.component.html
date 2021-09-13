@@ -1,4 +1,39 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<div class="container">
+  <div class="viewCandidates">
+    <h1>Candidates</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>FirstName</th>
+          <th>LastName</th>
+          <th>Email</th>
+          <th>Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of inputArr">
+          <td>{{ student.id }}</td>
+          <td>{{ student.first_name }}</td>
+          <td>{{ student.last_name }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.gender }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="addForm">
+    <h1>Add New Candidates</h1>
+    <form [formGroup]='viewForm' novalidate class="form" (ngSubmit)='addStudents()'>
+      <input formControlName='email' type="text" class="form-control" placeholder="Enter Email" />
+      <input formControlName='first_name' type="text" class="form-control" placeholder="Enter first_name" />
+      <input formControlName='last_name' type="text" class="form-control" placeholder="Enter last_name" />
+      <select formControlName="gender">
+  <option [ngValue]="null" disabled>Select Gender</option>
+  <option *ngFor="let gender of genders" [ngValue]="gender.value">{{gender.name}}</option>
+</select>
+      <button class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
