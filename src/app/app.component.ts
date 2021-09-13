@@ -14,9 +14,12 @@ import {
 export class AppComponent {
   name = 'Angular ' + VERSION.major;
   viewForm: FormGroup;
+  checkArray;
   inputArr;
+  checkboxValue;
   genders;
   ngOnInit() {
+    this.checkArray = [];
     this.genders = [
       {
         name: 'Male',
@@ -50,6 +53,29 @@ export class AppComponent {
 
       this.inputArr.push(this.viewForm.value);
       console.log(this.inputArr);
+    }
+  }
+  onChange(name, e) {
+    let i = 0;
+    if (e.target.checked) {
+      this.checkArray.push(name);
+    } else {
+      this.checkArray.map(elem => {
+        if (name == elem) {
+          this.checkArray.splice(i, 1);
+        }
+        i++;
+      });
+    }
+    console.log(name, this.checkArray);
+    this.modifyInputArray(this.checkArray);
+  }
+  modifyInputArray(genderArr) {
+    for (let i in this.inputArr) {
+      console.log(i);
+      if (genderArr.indexOf(this.inputArr[i].gender) == -1) {
+        this.inputArr.splice(i, 1);
+      }
     }
   }
 }

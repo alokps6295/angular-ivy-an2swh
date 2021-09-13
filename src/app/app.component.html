@@ -1,6 +1,16 @@
 <div class="container">
   <div class="viewCandidates">
     <h1>Candidates</h1>
+    <table>
+      <tr>
+        <td>
+          <div *ngFor="let gender of genders">
+            <input type="checkbox" (change)="onChange(gender.value, $event)" />
+ {{ gender.name }}
+          </div>
+        </td>
+      <tr>
+    </table>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -26,6 +36,7 @@
   <div class="addForm">
     <h1>Add New Candidates</h1>
     <form [formGroup]='viewForm' novalidate class="form" (ngSubmit)='addStudents()'>
+
       <input formControlName='email' type="text" class="form-control" placeholder="Enter Email" />
       <input formControlName='first_name' type="text" class="form-control" placeholder="Enter first_name" />
       <input formControlName='last_name' type="text" class="form-control" placeholder="Enter last_name" />
