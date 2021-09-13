@@ -68,7 +68,7 @@ export class AppComponent {
       });
     }
     console.log(name, this.checkArray);
-    this.modifyInputArray(this.checkArray);
+    //this.modifyInputArray(this.checkArray);
   }
   modifyInputArray(genderArr) {
     for (let i in this.inputArr) {

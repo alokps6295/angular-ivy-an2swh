@@ -23,12 +23,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let student of inputArr">
-          <td>{{ student.id }}</td>
-          <td>{{ student.first_name }}</td>
-          <td>{{ student.last_name }}</td>
-          <td>{{ student.email }}</td>
-          <td>{{ student.gender }}</td>
+          <div *ngIf="checkArray.indexOf(student.gender) != -1">
+            <td>{{ student.id }}</td>
+            <td>{{ student.first_name }}</td>
+            <td>{{ student.last_name }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.gender }}</td>
+          </div>
         </tr>
+
       </tbody>
     </table>
   </div>
