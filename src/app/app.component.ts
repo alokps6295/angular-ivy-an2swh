@@ -70,12 +70,4 @@ export class AppComponent {
     console.log(name, this.checkArray);
     //this.modifyInputArray(this.checkArray);
   }
-  modifyInputArray(genderArr) {
-    for (let i in this.inputArr) {
-      console.log(i);
-      if (genderArr.indexOf(this.inputArr[i].gender) == -1) {
-        this.inputArr.splice(i, 1);
-      }
-    }
-  }
 }
